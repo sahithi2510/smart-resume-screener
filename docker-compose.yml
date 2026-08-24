@@ -27,9 +27,9 @@ services:
       - "8000:8000"
     volumes:
       - ./src:/app/src
+    env_file: .env
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/smart_resume_screener
-      - LLM_API_KEY=${LLM_API_KEY:-}
     depends_on:
       db:
         condition: service_healthy

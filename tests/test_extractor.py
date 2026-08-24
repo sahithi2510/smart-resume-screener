@@ -110,7 +110,7 @@ async def test_extract_resume_happy_path():
         instance = MockClient.return_value
         instance.aio.models.generate_content = AsyncMock(return_value=response)
 
-        result = await extract_resume("Jane Doe\nSkills: Python\nExperience: 2 years at Acme.")
+        result, _ = await extract_resume("Jane Doe\nSkills: Python\nExperience: 2 years at Acme.")
 
     assert isinstance(result, ParsedResume)
     assert "Python" in result.skills
@@ -155,7 +155,7 @@ async def test_extract_resume_retry_success():
             side_effect=[bad_response, good_response]
         )
 
-        result = await extract_resume("Backend engineer resume text.")
+        result, _ = await extract_resume("Backend engineer resume text.")
 
     assert isinstance(result, ParsedResume)
     assert result.experience[0].duration_months == 24

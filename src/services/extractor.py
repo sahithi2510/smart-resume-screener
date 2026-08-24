@@ -174,7 +174,7 @@ async def _extract(
 # Public API
 # ---------------------------------------------------------------------------
 
-async def extract_resume(raw_text: str) -> ParsedResume:
+async def extract_resume(raw_text: str) -> tuple[ParsedResume, str]:
     """
     Extract structured resume data from raw text.
 
@@ -185,11 +185,12 @@ async def extract_resume(raw_text: str) -> ParsedResume:
     scrubbed_text, strip_log = scrub_pii(raw_text)
     logger.info("extract_resume: scrubber log = %s", strip_log)
 
-    return await _extract(
+    parsed = await _extract(
         raw_text=scrubbed_text,
         schema=ParsedResume,
         system_prompt=_RESUME_SYSTEM,
     )
+    return parsed, scrubbed_text
 
 
 async def extract_job_description(raw_text: str) -> JobDescription:

@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from src.routers import resume, match
+
 app = FastAPI(
     title="Smart Resume Screener API",
     description="Backend API for the Smart Resume Screener application",
@@ -15,6 +17,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(resume.router)
+app.include_router(match.router)
 
 @app.get("/")
 def read_root():

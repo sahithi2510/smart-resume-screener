@@ -76,7 +76,7 @@ async def main():
     print("=" * 60)
 
     print("\n--- RESUME EXTRACTION ---")
-    resume = await extract_resume(SAMPLE_RESUME)
+    resume, _ = await extract_resume(SAMPLE_RESUME)
     print(json.dumps(resume.model_dump(), indent=2))
 
     print("\n--- JOB DESCRIPTION EXTRACTION ---")
