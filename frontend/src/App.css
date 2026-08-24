@@ -1,1 +1,3 @@
-/* Custom App-level Tailwind utilities or overrides go here */
+#root {
+  min-height: 100vh;
+}
