@@ -167,4 +167,4 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
-"smoke_output.json" 
+smoke_output.json 
