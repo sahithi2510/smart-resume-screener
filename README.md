@@ -1,4 +1,3 @@
-````markdown
 # Smart Resume Screener
 
 An AI-powered resume screening and candidate matching system that analyzes resumes against job descriptions, performs semantic candidate retrieval, and generates explainable candidate scores.
@@ -620,6 +619,3 @@ B.Tech — Computer Science and Engineering
 # 📄 License
 
 This project is developed for educational and portfolio purposes.
-
-```
-```
