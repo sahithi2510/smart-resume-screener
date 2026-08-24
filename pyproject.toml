@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "smart-resume-screener"
 version = "0.1.0"
 description = "A smart resume screener and analyzer utilizing pgvector and LLMs"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 readme = "README.md"
 dependencies = [
     "fastapi>=0.110.0",
@@ -20,10 +20,19 @@ dependencies = [
     "pgvector>=0.2.5",
     "sentence-transformers>=2.5.0",
     "pytest>=8.0.0",
-    "httpx>=0.27.0"
+    "httpx>=0.27.0",
+    "google-genai>=1.0.0",
+    "pydantic-settings>=2.2.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "fpdf2>=2.7.9"
 ]
+
+[tool.pytest.ini_options]
+# Add the project root to sys.path so `from src.*` imports resolve without
+# a PYTHONPATH override. Required because the package is installed as
+# "smart-resume-screener" (dist name) but tests import via the `src` directory.
+pythonpath = ["."]
+asyncio_mode = "strict"
